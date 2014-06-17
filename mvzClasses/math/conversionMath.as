@@ -31,8 +31,36 @@ package mvzClasses.math
 		private function numberToCode(numberToConvert:int) : String
 		{
 			var booleanFlag:Boolean = false;
-			var 
-		}
+			var powerStorageVariable:int = 0;
+			var divisionStorageVariable:Number = NaN;
+			var flooringVariable:int = 0;
+			var finalString:String = null;
+			var iterator:int = 0;
+			
+			numberToConvert = Math.abs(numberToConvert);
+			
+			if (numberToConvert == 0)
+			{
+				return "0";
+			}
+			
+			while (iterator >= 0)
+			{
+				powerStorageVariable = Math.pow(60, iterator);
+				divisionStorageVariable = numberToConvert / powerStorageVariable;
+				flooringVariable = Math.floor(divisionStorageVariable);
+				
+				if (flooringVariable > 0 || booleanFlag)
+				{
+					booleanFlag = true;
+					finalString = finalString + numSymbols[flooringVariable];
+					numberToConvert = numberToConvert - flooringVariable * powerStorageVariable
+				}
+				iterator = iterator - 1;
+				
+			}
+			return finalString;
+		}//end function numberToCode
 		
 		public function addTo(oldScore:String, newScore:uint) : String
 		{
