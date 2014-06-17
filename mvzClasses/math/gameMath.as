@@ -65,7 +65,7 @@ package mvzClasses.math //create the package.
 		
 		public function radToDeg(angleInRadians:Number)
 		{
-			//This function is used to convert any angle from radians to degrees, by using the formula
+			//This function is used to convert any angle from radians to degrees, by using hte formula
 			// angle(in degrees) = angle(in radians) * 180/PI
 			
 			return angleInRadians * 180 / Math.PI;
@@ -237,17 +237,6 @@ package mvzClasses.math //create the package.
 			
 		}//end function isAbove
 		
-		public function segmentDistanceSquare(pointOneX:int, pointOneY:int, pointTwoX:int, pointTwoY:int, pointThreeX:int, pointThreeY:int)
-		{
-			var comparingPoint:Point = null;
-			if (isAbove(comparingPoint.x, comparingPoint.y, pointTwoX, pointTwoY, pointThreeX, pointThreeY))
-			{
-				return pointDistanceSquare(pointOneX, pointTwoX, comparingPoint.x, comparingPoint.y);
-			}
-			return Math.min(pointDistanceSquare(pointTwoX, pointTwoY, pointOneX, pointOneY), pointDistanceSquare(pointThreeX, pointThreeY, pointOneX, pointOneY));
-			
-		}//end function segmentDistanceSquare
-		
 		private function fixAngle(angleToFix:Number) : Number
 		{
 			// This function, as the name says, fixes the angle. "Fixing" the angle menas by bringing it into calculatory range.
@@ -283,36 +272,10 @@ package mvzClasses.math //create the package.
 		public function rotateToAngle(angle:Number, angleBetweenPointsPlusOffset:Number, turnSpeedIntoTimeDifference) : Number
 		{
 			//TODO: Write breifup
-			var tempAngle:Number = NaN;
-			var substractionOfAngles:Number = NaN;
-			var absoluteOfSubstraction:Number = NaN;
-			
-			angleBetweenPointsPlusOffset = fixAngle(angleBetweenPointsPlusOffset);
-			substractionOfAngles = angleBetweenPointsPlusOffset - angle;
-			absoluteOfSubstraction = Math.abs(substractionOfAngles);
-			
-			if (angleBetweenPointsPlusOffset < angle)
-			{
-				tempAngle = -turnSpeedIntoTimeDifference;
-			}
-			else
-			{
-				tempAngle = turnSpeedIntoTimeDifference;
-			}
-			
-			if (absoluteOfSubstraction > Math.PI)
-			{
-				tempAngle = -tempAngle;
-			}
-			if (absoluteOfSubstraction < turnSpeedIntoTimeDifference || absoluteOfSubstraction > 2 * Math.PI - turnSpeedIntoTimeDifference)
-			{
-				tempAngle = substractionOfAngles;
-			}
-			return fixAngle(angle + turnSpeedIntoTimeDifference);
 			
 			
 			
-		}//end function rotateToAngle
+		}
 		
 		
 		
