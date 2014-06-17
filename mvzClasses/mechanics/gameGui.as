@@ -48,7 +48,10 @@ package mvzClasses.mechanics
 		}//end function gameGui
 		
 		
-		public function setBomb
+		private function setIcon(param1:uint, param2:uint, param3:MovieClip)
+		{
+			
+		}
 		
 	}
 }
