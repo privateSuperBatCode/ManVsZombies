@@ -159,8 +159,24 @@ package mvzClasses.mechanics
 			return;
 		}
 		
-		public function setToolTip(param1:SharedObject)
+		public function setToolTip(sharedObject:SharedObject)  //The SharedObject class is used to read and store limited amounts of data on a user's computer or on a server
 		{
+			var tempString:String = null;
+			var keyTextArray:Array = null;
+			keyTextArray = [keyText0, keyText1, keyText2];
+			for (var i:int = 0; i < 3; i++ )
+			{
+				tempString = sharedObject.data.keys[i][1];
+				
+				if (tempString.indexOf(" ") != -1)
+				{
+					tempString = tempString.slice(0, tempString.indexOf(" "));
+				}
+				
+				keyTextArray[i].text = tempString;
+			}
+			
+			return;
 			
 		}
 	}
