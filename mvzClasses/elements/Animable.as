@@ -156,9 +156,34 @@ package mvzClasses.elements
 			{
 				if (animSign > 0)
 				{
+					if (cFrame < endFrame)
+					{
+						var increment:uint = cFrame + 1;
+						cFrame = increment;
+					}
+					else
+					{
+						animSign = -1;
+						var increment:uint = cFrame - 1;
+						cFrame = increment;
+					}
 					
 				}
+				else if (cFrame > startFrame)
+				{
+					
+					var increment:uint = cFrame - 1;
+					cFrame = increment;
+					
+				}
+				else
+				{
+					animSign = 1;
+					var increment:uint = cFrame + 1;
+					cFrame = increment;
+				}
 			}
+			return;
 		}
 		
 		
