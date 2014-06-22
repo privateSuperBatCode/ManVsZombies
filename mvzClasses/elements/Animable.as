@@ -46,6 +46,11 @@ package mvzClasses.elements
 			
 		}
 		
+		public function doNothing(param:uint) : void
+		{
+			return;
+		}
+		
 		public function moveEffect()
 		{
 			x = x + effectSpeedX;
@@ -66,8 +71,95 @@ package mvzClasses.elements
 			
 		}
 		
-		public function setAnim
+		public function setAnim(animationFunction:Function, startingAnimationFrame:uint = 0, endingAnimationFrame:uint = 1, animationDelay:uint = 50)
+		{
+			animate = animationFunction;
+			startFrame = startingAnimationFrame;
+			cFrame = startFrame;
+			endFrame = endingAnimationFrame;
+			animDelay = animationDelay;
+			return;
+			
+		}
 		
+		public function loop(delayParameter:uint) : void
+		{
+			if (animTick(delayParameter))
+			{
+				if (cFrame < endFrame)
+				{
+					var increment:uint = cFrame + 1;
+					cFrame = increment;
+				}
+				else
+				{
+					cFrame = startFrame;
+				}
+			}
+			return;
+		}
+		
+		public function reverseLoop(delayParameter:uint) : void
+		{
+			if (animTick(delayParameter))
+			{
+				if (cFrame > 0)
+				{
+					var inc:uint = cFrame - 1;
+					cFrame = inc;
+					
+				}
+				else
+				{
+					cFrame = endFrame;
+				}
+			}
+		}
+		
+		public function playOnceAndStop(delayParameter:uint) : void
+		{
+			
+			if (animTick(delayParameter))
+			{
+				if (cFrame < endFrame)
+				{
+					var increment:uint = cFrame + 1;
+					cFrame = increment;
+				}
+				else
+				{
+					animate = doNothing;
+				}
+			}
+			
+		}
+		
+		public function playOnceAndDie(delayParameter:uint) : void
+		{
+			if (animTick(delayParameter))
+			{
+				if (cFrame < endFrame)
+				{
+					var increment:uint = cFrame + 1;
+					cFrame = increment;
+				}
+				else
+				{
+					this.dead = true;
+				}
+			}
+		}
+		
+		public function pingPong(delayParameter:uint) : void
+		{
+			if (animTick(delayParameter))
+			{
+				if (animSign > 0)
+				{
+					
+				}
+			}
+		}
 		
 		
 	}
